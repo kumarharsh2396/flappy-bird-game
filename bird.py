@@ -51,11 +51,24 @@ def load_images():
             'bird-wingup': load_image('bird_wing_up.png'),
             'bird-wingdown': load_image('bird_wing_down.png')}
 
+def frames_to_msec(frames, fps=FPS):
+    """Convert frames to milliseconds at the specified framerate.
+
+    Arguments:
+    frames: How many frames to convert to milliseconds.
+    fps: The framerate to use for conversion.  Default: FPS.
+    """
+    return 1000.0 * frames / fps
+            
+
 def main():
     #main workflow
     pygame.init()
     pygame_surface = pygame.display.set_mode((WIN_WIDTH,WIN_HEIGHT))
     pygame.display.set_caption("Flappy Bird")
+
     clock = pygame.time.Clock()
-    score_font = pygame.font.SysFont(None,32,bold=True)
+    score_font = pygame.font.SysFont(None,32,bold=True) #default font
+
+    images = load_images()
     
